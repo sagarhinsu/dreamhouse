@@ -1,0 +1,6 @@
+{
+    "username": "sagarhinsu@gmail.com",
+    "password": "sagar@1312",
+    "strictTls": true,
+    "pooling": 10
+}
