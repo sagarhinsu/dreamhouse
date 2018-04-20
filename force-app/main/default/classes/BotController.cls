@@ -11,9 +11,7 @@ public with sharing class BotController {
         }
 
     }
-
     static List<HandlerMapping> handlerMappings;
-    
     static {
         List<Bot_Command__c> commands = [SELECT apex_class__c, pattern__c FROM Bot_Command__c WHERE Active__c = True ORDER BY Name];
         System.debug(commands);
@@ -23,10 +21,8 @@ public with sharing class BotController {
         }
         handlerMappings = mappings;
     }
-    
     @AuraEnabled
     public static BotResponse submit(String utterance, Map<String, String> session, String fileName, String fileContent) {
-        
         try {
             
             if (session != null) {
