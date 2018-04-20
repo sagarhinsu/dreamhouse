@@ -9,7 +9,6 @@ public with sharing class BotController {
             this.handlerClassName = handlerClassName;
             this.utterancePattern = Pattern.compile(patternStr);
         }
-
     }
     static List<HandlerMapping> handlerMappings;
     static {
@@ -24,7 +23,7 @@ public with sharing class BotController {
     @AuraEnabled
     public static BotResponse submit(String utterance, Map<String, String> session, String fileName, String fileContent) {
         try {
-            
+
             if (session != null) {
                 String nextCommand = session.get('nextCommand');
                 if (nextCommand != null) {
@@ -33,7 +32,6 @@ public with sharing class BotController {
                     return h.handle(utterance, null, session, fileName, fileContent);
                 }
             }
-        
             for (HandlerMapping mapping : BotController.handlerMappings) {
                 Matcher utteranceMatcher = mapping.utterancePattern.matcher(utterance);
                 if (utteranceMatcher.matches()) {
